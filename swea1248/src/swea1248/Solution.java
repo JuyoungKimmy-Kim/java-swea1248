@@ -22,9 +22,6 @@ public class Solution {
 		int T=Integer.parseInt(br.readLine());
 		for (int tc=1; tc<=T; tc++) {
 			
-			count=0;
-			Arrays.fill(visited, false);
-			
 			st=new StringTokenizer(br.readLine()," ");
 			int V=Integer.parseInt(st.nextToken());
 			int E=Integer.parseInt(st.nextToken());
@@ -32,6 +29,7 @@ public class Solution {
 			int B=Integer.parseInt(st.nextToken());
 			
 			visited=new boolean[V+1];
+			Arrays.fill(visited, false);
 			parent=new int[V+1];
 			level = new int [V+1];
 			adj= new ArrayList[V+1];
@@ -46,11 +44,12 @@ public class Solution {
 				int to=Integer.parseInt(st.nextToken());
 				
 				adj[from].add(to);
-				adj[to].add(from);
+				//adj[to].add(from);
 			}
 	
 			setTree(1, 0);
 			int ac=lca(A,B);
+			count=0;
 			childCheck(ac);
 			
 			System.out.println("#"+tc+" "+ac+" "+count);
